@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aditum.Challenge.Domain", "Aditum.Challenge.Domain\Aditum.Challenge.Domain.csproj", "{B1C534AD-14C8-475F-A96F-D411DF7457EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aditum.Challenge.Data", "Aditum.Challenge.Data\Aditum.Challenge.Data.csproj", "{026C9697-6B72-4213-9A8E-D1E595F2716E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aditum.Challenge.Application", "Aditum.Challenge.Application\Aditum.Challenge.Application.csproj", "{4A134D44-050B-46FC-B7F0-31249A8B86D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aditum.Challenge.CrossCutting", "Aditum.Challenge.CrossCutting\Aditum.Challenge.CrossCutting.csproj", "{BD186DB7-2CFA-498B-A899-4748824E61A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aditum.Challenge.Api", "Aditum.Challenge.Api\Aditum.Challenge.Api.csproj", "{99CD0DFB-7DDE-45BA-A64D-5E5D6EA9E1BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1C534AD-14C8-475F-A96F-D411DF7457EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1C534AD-14C8-475F-A96F-D411DF7457EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1C534AD-14C8-475F-A96F-D411DF7457EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1C534AD-14C8-475F-A96F-D411DF7457EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{026C9697-6B72-4213-9A8E-D1E595F2716E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{026C9697-6B72-4213-9A8E-D1E595F2716E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{026C9697-6B72-4213-9A8E-D1E595F2716E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{026C9697-6B72-4213-9A8E-D1E595F2716E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A134D44-050B-46FC-B7F0-31249A8B86D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A134D44-050B-46FC-B7F0-31249A8B86D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A134D44-050B-46FC-B7F0-31249A8B86D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A134D44-050B-46FC-B7F0-31249A8B86D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD186DB7-2CFA-498B-A899-4748824E61A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD186DB7-2CFA-498B-A899-4748824E61A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD186DB7-2CFA-498B-A899-4748824E61A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD186DB7-2CFA-498B-A899-4748824E61A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99CD0DFB-7DDE-45BA-A64D-5E5D6EA9E1BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99CD0DFB-7DDE-45BA-A64D-5E5D6EA9E1BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99CD0DFB-7DDE-45BA-A64D-5E5D6EA9E1BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99CD0DFB-7DDE-45BA-A64D-5E5D6EA9E1BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
