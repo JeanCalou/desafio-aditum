@@ -18,6 +18,21 @@ namespace Aditum.Challenge.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> ReadCSV([FromForm] IFormFileCollection file)
         {
+            if (file == null || file.Count == 0)
+            {
+                return BadRequest("No file uploaded.");
+            }
+
+            if (file.Count > 1)
+            {
+                return BadRequest("More than 1 file uploaded");
+            }
+
+            var fileExtension = Path.GetExtension(file[0].FileName).ToLower();
+            if (fileExtension != ".csv")
+            {
+                return BadRequest("Invalid file extension.");
+            }
             var restaurants = await _csvService.ReadCSV<dynamic>(file[0].OpenReadStream());
 
             return Ok(restaurants);

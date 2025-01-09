@@ -12,7 +12,7 @@ namespace Aditum.Challenge.Application.Mappers
     {
         public static Restaurant ToRestaurantDomain(this RestaurantRequest restaurant)
         {
-            return new Restaurant(restaurant.Name, restaurant.OpenHours);
+            return new Restaurant(new MongoDB.Bson.ObjectId(), restaurant.Name, restaurant.OpenHours);
         }
     }
 }
