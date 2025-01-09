@@ -21,12 +21,12 @@ namespace Aditum.Challenge.Data.Repository
             _collection = mongoDb.GetCollection<T>(collectionName);
         }
 
-        public async Task<List<T>> GetAll()
+        public async Task<List<T>> GetAllAsync()
         {
             return await _collection.Find(new BsonDocument()).ToListAsync();
         }
 
-        public async Task<List<T>> GetAllByFilter(Expression<Func<T, bool>> filterExpression)
+        public async Task<List<T>> GetAllByFilterAsync(Expression<Func<T, bool>> filterExpression)
         {
             var result = await _collection.Find(filterExpression).ToListAsync();
 

@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Aditum.Challenge.CrossCutting\Aditum.Challenge.CrossCutting.csproj" />
   </ItemGroup>
 

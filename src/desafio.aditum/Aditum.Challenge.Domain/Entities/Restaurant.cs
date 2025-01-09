@@ -7,10 +7,8 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Aditum.Challenge.Domain.Entities
 {
-    public class Restaurant(Guid id, string name, string openHours)
+    public class Restaurant(string name, string openHours)
     {
-        [BsonId]
-        public Guid Id { get; set; } = id;
         public string Name { get; set; } = name;
         public string OpenHours { get; set; } = openHours;
     }

@@ -6,9 +6,9 @@ namespace Aditum.Challenge.Domain.Interfaces
     public interface IBaseRepository<T> where T : class
     {
 
-        Task<List<T>> GetAll();
+        Task<List<T>> GetAllAsync();
 
-        Task<List<T>> GetAllByFilter(Expression<Func<T, bool>> filterExpression);
+        Task<List<T>> GetAllByFilterAsync(Expression<Func<T, bool>> filterExpression);
 
         Task<T> FindOneAsync(Guid id);
 
