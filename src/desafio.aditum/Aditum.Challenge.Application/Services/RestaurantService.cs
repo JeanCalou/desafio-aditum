@@ -1,6 +1,8 @@
 ﻿using Aditum.Challenge.Application.Interfaces;
 using Aditum.Challenge.Domain.Entities;
 using Aditum.Challenge.Domain.Interfaces;
+using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 
 namespace Aditum.Challenge.Application.Services
 {
@@ -18,9 +20,12 @@ namespace Aditum.Challenge.Application.Services
             await _restaurantRepository.InsertMany(restaurants);
         }
 
-        public async Task<List<Restaurant>> GetAllAsync()
+        public async Task<List<Restaurant>> GetAllByFilterAsync(TimeSpan time)
         {
-            return await _restaurantRepository.GetAllAsync();
+            var filter = new FilterDefinitionBuilder<Restaurant>()
+                .Where(x => x.OpenHour.Hour >= time.Hours && x.OpenHour.Minute >= time.Minutes && x.CloseHour.Hour >= time.Hours && x.CloseHour.Minute >= time.Minutes);
+
+            return await _restaurantRepository.GetAllByFilterAsync(_ => filter.Inject());
         }
 
         public async Task DeleteAllDocuments()

@@ -3,6 +3,7 @@ using Aditum.Challenge.Application.Interfaces;
 using Aditum.Challenge.Domain.Entities;
 using CsvHelper;
 using CsvHelper.Configuration;
+using MongoDB.Bson;
 
 namespace Aditum.Challenge.Application.Services
 {
@@ -33,12 +34,14 @@ namespace Aditum.Challenge.Application.Services
             await foreach (var item in list)
             {
                 var hours = item.Values.Last();
+                var openHour = DateTime.Parse(hours.ToString().Split("-")[0]);
+                var closeHour = DateTime.Parse(hours.ToString().Split("-")[1]);
 
                 Restaurant restaurant = new Restaurant(
                     new MongoDB.Bson.ObjectId(),
                     item.Values.First().ToString(),
-                    hours.ToString().Split("-")[0],
-                    hours.ToString().Split("-")[1]
+                    openHour,
+                    closeHour
                 );
 
                 restaurants.Add(restaurant);

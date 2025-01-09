@@ -4,7 +4,7 @@ namespace Aditum.Challenge.Application.Interfaces
 {
     public interface IRestaurantService
     {
-        Task<List<Restaurant>> GetAllAsync();
+        Task<List<Restaurant>> GetAllByFilterAsync(TimeSpan time);
         Task InsertMany(List<Restaurant> restaurants);
         Task DeleteAllDocuments();
     }

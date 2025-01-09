@@ -11,13 +11,13 @@ namespace Aditum.Challenge.Api.Controllers
         private readonly ICSVService _csvService = csvService;
 
         [HttpGet]
-        [Route("getRestaurant", Name = nameof(GetAllRestaurant))]
+        [Route("getRestaurantByHour", Name = nameof(GetRestaurantByHour))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetAllRestaurant()
+        public async Task<IActionResult> GetRestaurantByHour(TimeSpan time)
         {
-            var restaurantResponse = await _restaurantService.GetAllAsync();
+            var restaurantResponse = await _restaurantService.GetAllByFilterAsync(time);
             return Ok(restaurantResponse);
         }
 
