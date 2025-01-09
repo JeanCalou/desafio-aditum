@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Aditum.Challenge.Domain.Interfaces;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 
@@ -18,6 +19,26 @@ namespace Aditum.Challenge.Data.Repository
         {
             MapClasses();
             _collection = mongoDb.GetCollection<T>(collectionName);
+        }
+
+        public async Task<List<T>> GetAll()
+        {
+            return await _collection.Find(new BsonDocument()).ToListAsync();
+        }
+
+        public async Task<List<T>> GetAllByFilter(Expression<Func<T, bool>> filterExpression)
+        {
+            var result = await _collection.Find(filterExpression).ToListAsync();
+
+            return result;
+        }
+
+        public async Task<T> FindOneAsync(Guid id)
+        {
+            var filter = Builders<T>.Filter.Eq("_id", id);
+            var result = await _collection.Find(filter).FirstOrDefaultAsync();
+
+            return result;
         }
 
         public async Task AddOneAsync(T entity)
@@ -45,6 +66,6 @@ namespace Aditum.Challenge.Data.Repository
                     cm.SetIgnoreExtraElements(true);
                 });
             }
-        }
+        }        
     }
 }
