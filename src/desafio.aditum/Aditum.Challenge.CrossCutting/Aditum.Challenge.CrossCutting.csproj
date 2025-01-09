@@ -16,8 +16,4 @@
     <ProjectReference Include="..\Aditum.Challenge.Data\Aditum.Challenge.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Mongo\" />
-  </ItemGroup>
-
 </Project>

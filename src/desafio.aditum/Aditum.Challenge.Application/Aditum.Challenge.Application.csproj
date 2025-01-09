@@ -15,8 +15,4 @@
     <ProjectReference Include="..\Aditum.Challenge.Data\Aditum.Challenge.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\Responses\" />
-  </ItemGroup>
-
 </Project>

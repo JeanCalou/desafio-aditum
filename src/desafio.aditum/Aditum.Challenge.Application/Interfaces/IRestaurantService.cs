@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Aditum.Challenge.Application.Models.Requests;
+using Aditum.Challenge.Application.Models.Responses;
 
 namespace Aditum.Challenge.Application.Interfaces
 {
