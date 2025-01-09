@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using Aditum.Challenge.Application.Interfaces;
 using Aditum.Challenge.Domain.Entities;
 using CsvHelper;
 using CsvHelper.Configuration;
-using MongoDB.Bson;
 
 namespace Aditum.Challenge.Application.Services
 {
     public class CSVService : ICSVService
     {
-        public async Task<List<dynamic>> ReadCSV<T>(Stream file)
+        public async Task<IAsyncEnumerable<dynamic>> ReadCSV<T>(Stream file)
         {           
             var config = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
@@ -27,14 +21,31 @@ namespace Aditum.Challenge.Application.Services
 
             var data = csv.GetRecordsAsync<dynamic>();
 
-            List<dynamic> dynamicList = [];
+            return data;
+        }
 
-            await foreach (var x in data) 
+        public async Task<List<Restaurant>> ProcessCSVRestaurant(IAsyncEnumerable<dynamic> data)
+        {
+            var list = data.OfType<IDictionary<string, object>>();
+
+            List<Restaurant> restaurants = [];
+
+            await foreach (var item in list)
             {
-                dynamicList.Add(x);
+                var hours = item.Values.Last();
+
+                Restaurant restaurant = new Restaurant(
+                    new MongoDB.Bson.ObjectId(),
+                    item.Values.First().ToString(),
+                    hours.ToString().Split("-")[0],
+                    hours.ToString().Split("-")[1]
+                );
+
+                restaurants.Add(restaurant);
             }
 
-            return dynamicList;
+            return restaurants;
         }
+
     }
 }

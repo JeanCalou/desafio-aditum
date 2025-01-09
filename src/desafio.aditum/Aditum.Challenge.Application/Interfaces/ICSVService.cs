@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Aditum.Challenge.Domain.Entities;
 
 namespace Aditum.Challenge.Application.Interfaces
 {
     public interface ICSVService
     {
-        Task<List<dynamic>> ReadCSV<T>(Stream file);
+        Task<IAsyncEnumerable<dynamic>> ReadCSV<T>(Stream file);
+        Task<List<Restaurant>> ProcessCSVRestaurant(IAsyncEnumerable<dynamic> data);
     }
 }

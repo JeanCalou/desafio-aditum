@@ -33,9 +33,9 @@ namespace Aditum.Challenge.Api.Controllers
             {
                 return BadRequest("Invalid file extension.");
             }
-            var restaurants = await _csvService.ReadCSV<dynamic>(file[0].OpenReadStream());
+            var data = await _csvService.ReadCSV<dynamic>(file[0].OpenReadStream());
 
-            return Ok(restaurants);
+            return Ok(data);
         }
     }
 }

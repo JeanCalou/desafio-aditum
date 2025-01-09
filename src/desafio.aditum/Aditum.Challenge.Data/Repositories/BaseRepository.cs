@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq.Expressions;
 using Aditum.Challenge.Domain.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
@@ -32,28 +27,19 @@ namespace Aditum.Challenge.Data.Repository
 
             return result;
         }
-
-        public async Task<T> FindOneAsync(Guid id)
+        public async Task InsertMany(List<T> list)
         {
-            var filter = Builders<T>.Filter.Eq("_id", id);
-            var result = await _collection.Find(filter).FirstOrDefaultAsync();
+            await _collection.InsertManyAsync(list);
+        }
 
-            return result;
+        public async Task DeleteAllDocuments()
+        {
+            await _collection.DeleteManyAsync("{}");
         }
 
         public async Task AddOneAsync(T entity)
         {
             await _collection.InsertOneAsync(entity);
-        }
-
-        public async Task DeleteAsync(Expression<Func<T, bool>> filterExpression)
-        {
-            await _collection.DeleteOneAsync(filterExpression);
-        }
-
-        public async Task ReplaceOneAsync(Expression<Func<T, bool>> filterExpression, T entity, ReplaceOptions options)
-        {
-            await _collection.ReplaceOneAsync(filterExpression, entity, options);
         }
 
         private static void MapClasses()

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Aditum.Challenge.Application.Interfaces;
-using Aditum.Challenge.Application.Mappers;
-using Aditum.Challenge.Application.Models.Requests;
-using Aditum.Challenge.Application.Models.Responses;
+﻿using Aditum.Challenge.Application.Interfaces;
 using Aditum.Challenge.Domain.Entities;
 using Aditum.Challenge.Domain.Interfaces;
 
@@ -15,15 +7,15 @@ namespace Aditum.Challenge.Application.Services
     public class RestaurantService(IRestaurantRepository restaurantRepository) : IRestaurantService
     {
         private readonly IRestaurantRepository _restaurantRepository = restaurantRepository;
-        public async Task AddAsync(RestaurantRequest restaurant)
-        {
-            var restaurantDomain = restaurant.ToRestaurantDomain();
-            await _restaurantRepository.AddOneAsync(restaurantDomain);
-        }
+        //public async Task AddAsync(RestaurantRequest restaurant)
+        //{
+        //    var restaurantDomain = restaurant.ToRestaurantDomain();
+        //    await _restaurantRepository.AddOneAsync(restaurantDomain);
+        //}
 
-        public async Task DeleteAsync(RestaurantRequest restaurant)
+        public async Task InsertMany(List<Restaurant> restaurants)
         {
-            throw new NotImplementedException();
+            await _restaurantRepository.InsertMany(restaurants);
         }
 
         public async Task<List<Restaurant>> GetAllAsync()
@@ -31,9 +23,9 @@ namespace Aditum.Challenge.Application.Services
             return await _restaurantRepository.GetAllAsync();
         }
 
-        public async Task UpdateAsync(RestaurantRequest restaurant)
+        public async Task DeleteAllDocuments()
         {
-            throw new NotImplementedException();
+            await _restaurantRepository.DeleteAllDocuments();
         }
     }
 }
