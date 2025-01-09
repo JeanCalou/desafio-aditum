@@ -14,6 +14,7 @@ namespace Aditum.Challenge.CrossCutting.Services
         public static IServiceCollection AddServicos(this IServiceCollection services)
         {
             services.AddScoped<IRestaurantService, RestaurantService>();
+            services.AddScoped<ICSVService, CSVService>();
             return services;
         }
     }

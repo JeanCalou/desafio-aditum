@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Aditum.Challenge.Api.Controllers
 {
-    [Route("api/v1")]
+    [Route("restaurant")]
     [ApiController]
     public class RestaurantController(IRestaurantService restaurantService) : Controller
     {
