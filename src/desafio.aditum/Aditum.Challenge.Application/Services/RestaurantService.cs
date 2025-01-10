@@ -9,11 +9,6 @@ namespace Aditum.Challenge.Application.Services
     public class RestaurantService(IRestaurantRepository restaurantRepository) : IRestaurantService
     {
         private readonly IRestaurantRepository _restaurantRepository = restaurantRepository;
-        //public async Task AddAsync(RestaurantRequest restaurant)
-        //{
-        //    var restaurantDomain = restaurant.ToRestaurantDomain();
-        //    await _restaurantRepository.AddOneAsync(restaurantDomain);
-        //}
 
         public async Task InsertMany(List<Restaurant> restaurants)
         {

@@ -31,17 +31,6 @@ namespace Aditum.Challenge.Api.Controllers
             
         }
 
-        //[HttpPost]
-        //[Route("addRestaurant", Name = nameof(AddRestaurant))]
-        //[ProducesResponseType(StatusCodes.Status201Created)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-        //public async Task<IActionResult> AddRestaurant([FromBody] RestaurantRequest restaurantRequest)
-        //{
-        //    await _restaurantService.AddAsync(restaurantRequest);
-        //    return Created("", null);
-        //}
-
         [HttpPost]
         [Route("processCSV", Name = nameof(ProcessCSV))]
         [ProducesResponseType(StatusCodes.Status201Created)]
