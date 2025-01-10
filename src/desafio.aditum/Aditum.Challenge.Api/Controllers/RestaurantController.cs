@@ -23,7 +23,7 @@ namespace Aditum.Challenge.Api.Controllers
             if (isValidTime)
             {
                 var restaurantResponse = await _restaurantService.GetAllByFilterAsync(time);
-                return Ok(restaurantResponse);
+                return Ok(restaurantResponse.Select(x => x.Name));
             } else
             {
                 return BadRequest("The input need to be on the format HH:mm!");
@@ -59,7 +59,7 @@ namespace Aditum.Challenge.Api.Controllers
             await _restaurantService.DeleteAllDocuments();
             await _restaurantService.InsertMany(restaurants);
 
-            return Ok(restaurants);
+            return Ok();
         }
 
     }

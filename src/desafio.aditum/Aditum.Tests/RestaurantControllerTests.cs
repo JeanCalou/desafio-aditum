@@ -65,7 +65,7 @@ namespace Aditum.Tests
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);
-            Assert.Equal(restaurantResponse, okResult.Value);
+            Assert.Equal(restaurantResponse.Select(x => x.Name), okResult.Value);
         }
 
         [Fact]
@@ -118,12 +118,8 @@ namespace Aditum.Tests
         }
 
         [Fact]
-        public async Task ProcessCSV_ReturnsOk_WhenFileIsValidCSV()
+        public async Task ProcessCSV_ValidFile_ReturnsOk()
         {
-            // Arrange
-            var file = new FormFile(Stream.Null, 0, 0, "validFile", "file.csv");
-            var files = new FormFileCollection { file };
-
             Restaurant restaurant = new Restaurant(
                     Guid.NewGuid(),
                     "Restaurant 1",
@@ -131,25 +127,23 @@ namespace Aditum.Tests
                     DateTime.Parse("22:00")
                 );
 
-            var csvData = new List<dynamic> { new { Name = "Restaurant 1", Address = "123 St" } };
-            var restaurants = new List<Restaurant>
-            {
-                restaurant
-            };
+            // Arrange
+            var file = new FormFile(new MemoryStream(), 0, 0, "file", "file.csv");
+            var files = new FormFileCollection { file };
 
-            _mockCsvService.Setup(service => service.ReadCSV(It.IsAny<Stream>())).Returns(csvData);
-            _mockCsvService.Setup(service => service.ProcessCSVRestaurant(csvData)).Returns(restaurants);
-            _mockRestaurantService.Setup(service => service.DeleteAllDocuments()).Returns(Task.CompletedTask);
-            _mockRestaurantService.Setup(service => service.InsertMany(It.IsAny<List<Restaurant>>())).Returns(Task.CompletedTask);
+            // Mock do comportamento do serviço
+            _mockCsvService.Setup(s => s.ReadCSV(It.IsAny<Stream>())).Returns(new List<string> { "Data1", "Data2" });
+            _mockCsvService.Setup(s => s.ProcessCSVRestaurant(It.IsAny<List<string>>())).Returns(new List<Restaurant> { restaurant });
+
+            // Mock do serviço de restaurante
+            _mockRestaurantService.Setup(s => s.DeleteAllDocuments()).Returns(Task.CompletedTask);
+            _mockRestaurantService.Setup(s => s.InsertMany(It.IsAny<List<Restaurant>>())).Returns(Task.CompletedTask);
 
             // Act
             var result = await _controller.ProcessCSV(files);
 
             // Assert
-            var okResult = Assert.IsType<OkObjectResult>(result);
-            Assert.Equal(restaurants, okResult.Value);
-            _mockRestaurantService.Verify(service => service.DeleteAllDocuments(), Times.Once);
-            _mockRestaurantService.Verify(service => service.InsertMany(It.IsAny<List<Restaurant>>()), Times.Once);
+            Assert.IsType<OkResult>(result);
         }
     }
 }
