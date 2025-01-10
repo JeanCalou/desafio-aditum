@@ -38,7 +38,7 @@ namespace Aditum.Challenge.Application.Services
                 var closeHour = DateTime.Parse(hours.ToString().Split("-")[1]);
 
                 Restaurant restaurant = new Restaurant(
-                    new MongoDB.Bson.ObjectId(),
+                    Guid.NewGuid(),
                     item.Values.First().ToString(),
                     openHour,
                     closeHour

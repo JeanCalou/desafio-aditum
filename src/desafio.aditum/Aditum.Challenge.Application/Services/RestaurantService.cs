@@ -20,10 +20,10 @@ namespace Aditum.Challenge.Application.Services
             await _restaurantRepository.InsertMany(restaurants);
         }
 
-        public async Task<List<Restaurant>> GetAllByFilterAsync(TimeSpan time)
+        public async Task<List<Restaurant>> GetAllByFilterAsync(DateTime time)
         {
             var filter = new FilterDefinitionBuilder<Restaurant>()
-                .Where(x => x.OpenHour.Hour >= time.Hours && x.OpenHour.Minute >= time.Minutes && x.CloseHour.Hour >= time.Hours && x.CloseHour.Minute >= time.Minutes);
+                .Where(x => x.OpenHour <= time && x.CloseHour >= time);
 
             return await _restaurantRepository.GetAllByFilterAsync(_ => filter.Inject());
         }

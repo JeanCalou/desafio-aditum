@@ -1,4 +1,5 @@
-﻿using Aditum.Challenge.Application.Interfaces;
+﻿using System.Globalization;
+using Aditum.Challenge.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aditum.Challenge.Api.Controllers
@@ -15,10 +16,19 @@ namespace Aditum.Challenge.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetRestaurantByHour(TimeSpan time)
+        public async Task<IActionResult> GetRestaurantByHour(string input)
         {
-            var restaurantResponse = await _restaurantService.GetAllByFilterAsync(time);
-            return Ok(restaurantResponse);
+            bool isValidTime = DateTime.TryParseExact(input, "HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime time);
+
+            if (isValidTime)
+            {
+                var restaurantResponse = await _restaurantService.GetAllByFilterAsync(time);
+                return Ok(restaurantResponse);
+            } else
+            {
+                return BadRequest("The input need to be on the format HH:mm!");
+            }
+            
         }
 
         //[HttpPost]
