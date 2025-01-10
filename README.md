@@ -1,7 +1,4 @@
-API
-Este projeto utiliza uma estrutura API utilizando .net core 8.0
-
-Tecnologias utilizadas
+Tecnologias utilizadas:
 
 .NET Core 8.0
 MongoDb
@@ -11,16 +8,19 @@ Moq
 CSVHelper
 MongoDBDriver
 
-Instalação
+Instalação:
+
 Requisitos:
 
 Docker
 
-Execução
+Execução:
+
 Na pasta .\desafio-aditum\src\desafio.aditum executar o comando
 docker-compose up --build -d
 
 EndPoints:
+
 GET: localhost:8080/restaurant/getRestaurantByHour => Postman: necessario input no formato HH:MM exemplo: "09:00"
 
 Esse metodo é oque foi pedido no desafio, "receba uma hora do dia como input no formato HH:MM, 
