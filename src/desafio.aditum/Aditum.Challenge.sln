@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aditum.Challenge.Domain", "Aditum.Challenge.Domain\Aditum.Challenge.Domain.csproj", "{B1C534AD-14C8-475F-A96F-D411DF7457EA}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aditum.Challenge.CrossCutting", "Aditum.Challenge.CrossCutting\Aditum.Challenge.CrossCutting.csproj", "{BD186DB7-2CFA-498B-A899-4748824E61A0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aditum.Challenge.Api", "Aditum.Challenge.Api\Aditum.Challenge.Api.csproj", "{99CD0DFB-7DDE-45BA-A64D-5E5D6EA9E1BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aditum.Tests", "Aditum.Tests\Aditum.Tests.csproj", "{7989CE1B-B2B5-47C9-908C-F924E05B31F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{99CD0DFB-7DDE-45BA-A64D-5E5D6EA9E1BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99CD0DFB-7DDE-45BA-A64D-5E5D6EA9E1BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99CD0DFB-7DDE-45BA-A64D-5E5D6EA9E1BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7989CE1B-B2B5-47C9-908C-F924E05B31F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7989CE1B-B2B5-47C9-908C-F924E05B31F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7989CE1B-B2B5-47C9-908C-F924E05B31F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7989CE1B-B2B5-47C9-908C-F924E05B31F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

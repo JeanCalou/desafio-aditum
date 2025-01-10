@@ -33,7 +33,13 @@ namespace Aditum.Challenge.Api.Controllers
             {
                 return BadRequest("Invalid file extension.");
             }
-            var data = await _csvService.ReadCSV<dynamic>(file[0].OpenReadStream());
+
+            if (file[0].Length == 0)
+            {
+                return BadRequest("The file is empty!");
+            }
+            
+            var data = _csvService.ReadCSV(file[0].OpenReadStream());
 
             return Ok(data);
         }

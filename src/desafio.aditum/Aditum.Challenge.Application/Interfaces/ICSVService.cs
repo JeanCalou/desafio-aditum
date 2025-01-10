@@ -4,7 +4,7 @@ namespace Aditum.Challenge.Application.Interfaces
 {
     public interface ICSVService
     {
-        Task<IAsyncEnumerable<dynamic>> ReadCSV<T>(Stream file);
-        Task<List<Restaurant>> ProcessCSVRestaurant(IAsyncEnumerable<dynamic> data);
+        IEnumerable<dynamic> ReadCSV(Stream file);
+        List<Restaurant> ProcessCSVRestaurant(IEnumerable<dynamic> data);
     }
 }

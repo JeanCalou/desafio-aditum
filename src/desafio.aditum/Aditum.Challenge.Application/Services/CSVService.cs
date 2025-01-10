@@ -9,7 +9,7 @@ namespace Aditum.Challenge.Application.Services
 {
     public class CSVService : ICSVService
     {
-        public async Task<IAsyncEnumerable<dynamic>> ReadCSV<T>(Stream file)
+        public IEnumerable<dynamic> ReadCSV(Stream file)
         {           
             var config = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
@@ -20,18 +20,18 @@ namespace Aditum.Challenge.Application.Services
             var reader = new StreamReader(file);
             var csv = new CsvReader(reader, config);
 
-            var data = csv.GetRecordsAsync<dynamic>();
+            var data = csv.GetRecords<dynamic>();
 
             return data;
         }
 
-        public async Task<List<Restaurant>> ProcessCSVRestaurant(IAsyncEnumerable<dynamic> data)
+        public List<Restaurant> ProcessCSVRestaurant(IEnumerable<dynamic> data)
         {
             var list = data.OfType<IDictionary<string, object>>();
 
             List<Restaurant> restaurants = [];
 
-            await foreach (var item in list)
+            foreach (var item in list)
             {
                 var hours = item.Values.Last();
                 var openHour = DateTime.Parse(hours.ToString().Split("-")[0]);
